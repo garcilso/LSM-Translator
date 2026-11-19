@@ -1,0 +1,196 @@
+:root {
+  --bg: #030303;
+  --panel: #0a0a0a;
+  --text: #ffffff;
+  --muted: #cccccc;
+  --accent: #008600;
+  --btn: #0f0f0f;
+  --border: 2px;
+  --border_color: #000000;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  padding: 16px;
+  font-family: "Outfit", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.container { 
+  max-width: 90vw; 
+  margin: 0 auto; 
+  display: grid; 
+  gap: 1vh; 
+}
+
+.topbar { 
+  display: flex; 
+  flex-wrap: wrap; 
+  justify-content: space-between; 
+  align-items: center; 
+  gap: 10px; 
+}
+
+.topbar h1 { 
+  margin: 0; 
+  font-size: 2rem; 
+}
+
+.cam-controls, .action-row, .trainer-controls, .io-row { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 10px; 
+}
+
+button, .file-btn, select, input {
+  background: var(--btn);
+  color: var(--text);
+  border: var(--border) solid var(--border_color);
+  border-radius: var(--border);
+  padding: 10px 10px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+button.primary { 
+  background: var(--accent); 
+  border-color: var(--accent); 
+  font-weight: 600; 
+}
+
+button:disabled { 
+  opacity: 0.5; 
+  cursor: not-allowed; 
+}
+
+.btn-reset {
+  background: #910000;
+}
+
+.btn-delete {
+  background: #945400;
+}
+
+.stage-wrap { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 10px; align-items: start; 
+}
+
+@media (max-width: 50%) { .stage-wrap { grid-template-columns: 1fr; } }
+
+.stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  background: var(--bg);
+  border-radius: var(--border);
+  overflow: hidden;
+  border: var(--border) solid var(--border_color);
+}
+.stage video, .stage canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.stage.mirrored video, .stage.mirrored canvas { transform: scaleX(-1); }
+
+.badge {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  background: var(--btn);
+  padding: 10px 10px;
+  border-radius: var(--border);
+  font-size: 0.75rem;
+}
+
+.hud {
+  background: var(--panel);
+  border-radius: var(--border);
+  padding: 1vh;
+  border: var(--border) solid var(--border_color);
+  display: grid;
+  height: 100%;
+  gap: 1vh;
+}
+
+.trainer {
+    background: var(--panel);
+  border-radius: var(--border);
+  padding: 1vh;
+  border: var(--border) solid var(--border_color);
+  display: grid;
+  gap: 1vh;
+}
+
+.action-row { 
+  justify-content: center; 
+  padding-top: 1vh;
+}
+
+.label-muted, .hint { 
+  color: var(--muted); 
+  font-size: 1.25rem; 
+  margin: 0; 
+}
+
+.pred-letter { 
+  font-size: 1.5rem; 
+  font-weight: 600; 
+  color: var(--accent); 
+  line-height: 1; 
+}
+
+.pred-conf { 
+  font-size: 1rem; 
+  color: var(--muted); 
+  margin-bottom: 10px; 
+}
+
+.progress-track { 
+  height: 10px; 
+  background: var(--btn); 
+  border-radius: var(--border); 
+  overflow: hidden; 
+  margin-bottom: 10px; 
+}
+
+.progress-fill { 
+  height: 100%; 
+  width: 0%; 
+  background: var(--accent); 
+  transition: width 60ms linear; 
+}
+
+textarea {
+  width: 100%;
+  background: var(--bg);
+  color: var(--text);
+  border: var(--border) solid var(--border_color);
+  border-radius: var(--border);
+  padding: 10px;
+  font-size: 1.25rem;
+  resize: vertical;
+}
+
+.counts-grid { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 10px; 
+}
+
+.count-pill {
+  background: var(--btn);
+  border: var(--border) solid var(--border_color);
+  border-radius: var(--border);
+  padding: 10px 10px;
+  font-size: 1.25rem;
+}
+.count-pill.ready { border-color: var(--btn); color: #404040; }
